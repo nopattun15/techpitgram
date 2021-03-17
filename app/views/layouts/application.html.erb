@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=devise-width, initial-scale=1">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -13,8 +15,15 @@
   </head>
 
   <body>
-    <%= render 'partial/navbar'%>
+    <div id="wrapper">
+      <%= render 'partial/navbar'if current_user %>
+      <%= render 'partial/error_message' %>   
 
-    <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
+
+      <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>
